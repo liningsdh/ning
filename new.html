@@ -1,0 +1,54 @@
+	
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <title></title>
+	</head>
+	<body>
+	姓名：<input type="text"><br><br>
+	 男: <input type="radio" name="sex" value="男">
+	 女：<input type="radio" name="sex" value="女">
+	<br>
+	<br>
+	<textarea  cols="30" rows="10"></textarea>
+	
+	
+	<script>
+	
+	     var aput=document.querySelectorAll("input");
+	     var texa=document.querySelector("textarea");
+	
+	//     当页面打开的时候去显示数据
+	     aput[0].value=localStorage.getItem("put_7a");
+	      //设置性别
+	     for(var i=0;i<aput.length;i++){
+	         if(localStorage.getItem("sex_7a")==aput[i].value){
+	             aput[i].checked=true;
+	         }
+	     }
+	//     设置文本域
+	     texa.value=localStorage.getItem("texa_7a");
+	//    当页面关闭的时候去保存数据
+	    window.onunload=function(){
+	        if(aput[0].value){
+	//            保存input
+	            localStorage.setItem("put_7a",aput[0].value);
+	        }
+	
+	//        保存单选框
+	    for(var i=0;i<aput.length;i++){
+	        if(aput[i].checked){
+	            localStorage.setItem("sex_7a",aput[i].value);
+	
+	        }
+	    }
+	
+	// 保存textarea
+	        if(texa.value){
+	            localStorage.setItem("texa_7a",texa.value)
+	        }
+	    }
+	</script>
+	</body>
+	</html>
